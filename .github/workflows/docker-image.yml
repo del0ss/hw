@@ -20,5 +20,5 @@ jobs:
           registry: oauth
           username: cr.yandex
           password: AQAAAAAcQBsSAATuwWAXbNySKEPTj26_gZ9_kBk
-      - run: docker tag ubuntu cr.yandex/crpqsamgcnl010de07sa/ubuntu:hello #docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+#docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       - run: docker push cr.yandex/crpqsamgcnl010de07sa/ubuntu:hello
