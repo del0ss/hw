@@ -21,4 +21,4 @@ jobs:
           username: cr.yandex
           password: AQAAAAAcQBsSAATuwWAXbNySKEPTj26_gZ9_kBk
 #docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-      - run: docker push cr.yandex/crpqsamgcnl010de07sa/ubuntu:hello
+      - run: echo docker image list #docker push cr.yandex/crpqsamgcnl010de07sa/ubuntu:hello
