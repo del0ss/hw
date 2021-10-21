@@ -12,12 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    -
-        name: Login to GitLab
-        with:
-          registry: oauth
-          username: ${{ secrets.GITLAB_USERNAME }}
-          password: ${{ secrets.GITLAB_PASSWORD }}
-    - uses: actions/checkout@v2
+    -uses: actions/checkout@v2
+    name: Login to GitLab
+      with:
+        registry: oauth
+        username: ${{ secrets.GITLAB_USERNAME }}
+        password: ${{ secrets.GITLAB_PASSWORD }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
