@@ -26,14 +26,14 @@ jobs:
       - name: Yandex Cloud CR "Login" Action for GitHub Actions
         uses: yc-actions/yc-cr-login@v0.1-alpha
         with:
-          registry: quay.io
+          registry: cr.yandex
           username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_ROBOT_TOKEN }}
+          password: t1.9euelZqPj53Oy5WVjJjNm56eypmUnu3rnpWampSKmMyQyZabmZXMx86azpnl8_cYTDV0-e9XMQdY_t3z91h6MnT571cxB1j-zef1656Vmsqezoucm5aTncrIz4rJyp2d7_0.01kGU_pAqiqnMKxXuxh2st_D_tf51ZR9VSuUTslgoOU-zkeh8dpBeLt0Clt-wPYs0RNL3hNXGSwotplFWeTXDQ
 
 
       - name: Build, tag, and push image to Yandex Cloud Container Registry
         env:
-          CR_REGISTRY: crpqsamgcnl010de07sa
+          CR_REGISTRY: crpqi4tdcdpvjegk0nu4
           CR_REPOSITORY: yc-cr-github-action
           IMAGE_TAG: ${{ github.sha }}
         run: |
