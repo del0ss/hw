@@ -1,24 +1,39 @@
-name: Docker-Image
+# This is a basic workflow to help you get started with Actions
 
+name: Push To Yandex Cloud CR
+
+# Controls when the action will run. 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [created]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-
+  # This workflow contains a single job called "build"
   build:
-
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - 
-        uses: actions/checkout@v2
-        name: Build the Docker image
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Yandex Cloud CR "Login" Action for GitHub Actions
+        uses: yc-actions/yc-cr-login@v0.1-alpha
         with:
-          registry: cr.yandex
-          username: iam
-          password: t1.9euelZqPj53Oy5WVjJjNm56eypmUnu3rnpWampSKmMyQyZabmZXMx86azpnl8_cYTDV0-e9XMQdY_t3z91h6MnT571cxB1j-zef1656Vmsqezoucm5aTncrIz4rJyp2d7_0.01kGU_pAqiqnMKxXuxh2st_D_tf51ZR9VSuUTslgoOU-zkeh8dpBeLt0Clt-wPYs0RNL3hNXGSwotplFWeTXDQ
-      - run: docker build -t cr.yandex/crpqi4tdcdpvjegk0nu4/yc-cr-github-action:github.sha . 
-      - run: docker push cr.yandex/crpqi4tdcdpvjegk0nu4/yc-cr-github-action:github.sha
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+
+
+      - name: Build, tag, and push image to Yandex Cloud Container Registry
+        env:
+          CR_REGISTRY: crpqsamgcnl010de07sa
+          CR_REPOSITORY: yc-cr-github-action
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
+          docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
