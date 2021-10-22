@@ -1,3 +1,3 @@
 while True:
     print('Yes')
-    print('No)
+    print('No')
