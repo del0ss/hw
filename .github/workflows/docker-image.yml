@@ -21,4 +21,4 @@ jobs:
           username: iam
           password: t1.9euelZqPj53Oy5WVjJjNm56eypmUnu3rnpWampSKmMyQyZabmZXMx86azpnl8_cYTDV0-e9XMQdY_t3z91h6MnT571cxB1j-zef1656Vmsqezoucm5aTncrIz4rJyp2d7_0.01kGU_pAqiqnMKxXuxh2st_D_tf51ZR9VSuUTslgoOU-zkeh8dpBeLt0Clt-wPYs0RNL3hNXGSwotplFWeTXDQ
       - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s) #docker build -t cr.yandex/crpqi4tdcdpvjegk0nu4/yc-cr-github-action:github.sha . 
-      - run: docker push cr.yandex/crpqsamgcnl010de07sa/ubuntu:hello # cr.yandex/crpqi4tdcdpvjegk0nu4/yc-cr-github-action:github.sha
+      - run: docker push cr.yandex/crpqsamgcnl010de07sa/my-image-name:$(date +%s) #ubuntu:hello # cr.yandex/crpqi4tdcdpvjegk0nu4/yc-cr-github-action:github.sha
