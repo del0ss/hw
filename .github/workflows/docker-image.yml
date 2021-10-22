@@ -27,7 +27,7 @@ jobs:
         uses: yc-actions/yc-cr-login@v0.1-alpha
         with:
           registry: cr.yandex
-          username: ${{ secrets.QUAY_USERNAME }}
+          username: iam
           password: t1.9euelZqPj53Oy5WVjJjNm56eypmUnu3rnpWampSKmMyQyZabmZXMx86azpnl8_cYTDV0-e9XMQdY_t3z91h6MnT571cxB1j-zef1656Vmsqezoucm5aTncrIz4rJyp2d7_0.01kGU_pAqiqnMKxXuxh2st_D_tf51ZR9VSuUTslgoOU-zkeh8dpBeLt0Clt-wPYs0RNL3hNXGSwotplFWeTXDQ
 
 
@@ -36,4 +36,6 @@ jobs:
           CR_REGISTRY: crpqi4tdcdpvjegk0nu4
           CR_REPOSITORY: yc-cr-github-action
           IMAGE_TAG: ${{ github.sha }}
-
+        run: |
+          docker build -t cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG .
+          docker push cr.yandex/$CR_REGISTRY/$CR_REPOSITORY:$IMAGE_TAG
