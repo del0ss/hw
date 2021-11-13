@@ -1,3 +1,2 @@
-while True:
-    print('Yes')
-    print('No')
+print('Yes')
+print('No')
